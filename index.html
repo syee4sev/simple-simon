@@ -146,7 +146,7 @@
     $(document).ready(function () {
 
 var sysRanNumA = [];
-
+var level = 1;
 
 //if GO button is pressed
         $("#small-circle").click(function () {
@@ -192,9 +192,11 @@ var sysRanNumA = [];
 
 // get first system click
         function firstSysClick() {
-//        var i = 0;
 
-            switch (sysRanNumA[0]) {
+        var i = 0;
+        var intervalId = setInterval(function(){
+
+            switch (sysRanNumA[i]) {
                 case 1 :
                     flash('#blue');
                     break;
@@ -210,15 +212,22 @@ var sysRanNumA = [];
 
             } // end switch
 
+            if(i >= sysRanNumA.length -1){
+                userPressedButton();
+                clearInterval(intervalId);
+            }else{
+                i++;
+            }
+        }, 800);
+
             //user will now press button tyo mimic the random click
-            userPressedButton();
 
     };
 
 function userPressedButton() {
     var i = 0;
 
-    $(".box").click( function() {
+    $(".box").on('click', function() {
     var dType = $(this).attr("data-box1");
     console.log(dType);
 
@@ -242,6 +251,7 @@ function userPressedButton() {
             if (i == sysRanNumA.length - 1) {
 
                 getSystemRanNum();
+                $(".box").off('click');
 
             }  else {
 
@@ -252,19 +262,15 @@ function userPressedButton() {
         } else {
             sysRanNumA = [];
             alert("You are done!");
+            $(".box").off('click');
         }
     });
 
 
-    setInterval(function() {
-        var i = 0;
-        while (i < sysRanNumA[i].length)
-            {
-                firstSysClick();
-                i++;
-            }
-        }, 3000);
     }
+
+
+
 
 
 
