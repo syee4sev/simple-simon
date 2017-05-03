@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
-<link rel="stylesheet" href="css/index.css">
+<!--<link rel="stylesheet" href="css/index.css">-->
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -146,7 +146,6 @@
     $(document).ready(function () {
 
 var sysRanNumA = [];
-var i = 0;
 
 
 //if GO button is pressed
@@ -193,6 +192,7 @@ var i = 0;
 
 // get first system click
         function firstSysClick() {
+//        var i = 0;
 
             switch (sysRanNumA[0]) {
                 case 1 :
@@ -216,6 +216,7 @@ var i = 0;
     };
 
 function userPressedButton() {
+    var i = 0;
 
     $(".box").click( function() {
     var dType = $(this).attr("data-box1");
@@ -236,37 +237,39 @@ function userPressedButton() {
                     break;
         } // end switch
 
+        if (sysRanNumA[i] == dType) {
+
+            if (i == sysRanNumA.length - 1) {
+
+                getSystemRanNum();
+
+            }  else {
+
+                i++;
+
+            }
+
+        } else {
+            sysRanNumA = [];
+            alert("You are done!");
+        }
     });
 
-    compareF();
-};
 
-
-function compareF() {
-    if (sysRanNumA[i] == dType) {
-
-        if (sysRanNumA.length - 1) {
-
-            getSystemRanNum();
-
-        }  else {
-            i++;
-        }
-
-    } else {
-        alert("You are done!");
+    setInterval(function() {
+        var i = 0;
+        while (i < sysRanNumA[i].length)
+            {
+                firstSysClick();
+                i++;
+            }
+        }, 3000);
     }
 
-}
 
-
-
-//        var dType = $(this).attr("data-box1");
-//        var userArray.push(dtype);
-//        console.log(userArray);
 
 // end main iffe
-    });
+});
 
 
 </script>
@@ -277,4 +280,28 @@ function compareF() {
 <!--make big buttons 2d-->
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
