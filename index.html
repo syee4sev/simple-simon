@@ -1,10 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width" , initial-scale="1">
+<link rel="stylesheet" href="css/index.css">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
 <head>
     <meta charset="UTF-8">
     <title>Simple Simon</title>
+
+    <style>
+
+
+        /*#outside-div {*/
+        /*margin-top: 150px;*/
+        /*margin-left: 400px;*/
+        /*}*/
+
+        .reset-btn {
+            width: 80px;
+            heigth: 40px;
+            margin-left: 240px;
+            border-radius: 7px;
+            background-color: gray;
+            opacity: .5;
+            color: white;
+            font-weight: bold;
+        }
+        .box {
+            width: 220px;
+            height: 220px;
+            margin-left: 23px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            border-radius: 30px;
+            float: left;
+        }
+        #blue {
+            background-color: blue;
+        }
+        #red {
+            background-color: red;
+        }
+        #green {
+            background-color: green;
+        }
+        #yellow {
+            background-color: yellow;
+        }
+        #container {
+            background-color: black;
+            width: 510px;
+            height: 580px;
+            margin-left: 350px;
+            border-radius: 25px;
+        }
+        .circle {
+            border-radius: 50%;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: black;
+            margin-left: 500px;
+            margin-top: -425px;
+        }
+        .goCircle {
+            border-radius: 50%;
+            width: 125px;
+            height: 125px;
+            border: 1px solid orange;
+            background: white;
+            color: Orange;
+            font-size: xx-large;
+            position: absolute;
+            margin-top: 33px;
+            margin-left: 40px;
+        }
+        span {
+            margin-left: 35px;
+            margin-top: 35px;
+            position: absolute;
+        }
+        .labelB {
+            text-decoration: solid;
+            font-family: Monaco;
+            color: red;
+            margin-left: -310px;
+            margin-top: 165px;
+        }
+        .inputB {
+            width: 60px;
+            height: 35px;
+            border-color: red;
+            border-style: inset;
+            margin-left: 4px;
+            border-radius: 5px;
+        }
+
+
+    </style>
+
 </head>
+
 <body>
 
+
+<br>
+
+<div id="container">
+
+    <div class="box" id="blue" data-box1="1"></div>
+    <div class="box" id="red" data-box1="2"></div>
+    <div class="box" id="green" data-box1="3"></div>
+    <div class="box" id="yellow" data-box1="4"></div>
+</div>
+
+<div class="circle">
+    <div id="small-circle" class="goCircle">
+        <span>Go!</span>
+    </div>
+</div>
+
+
+<div id="outside-div">
+    <div>
+        <label id="#level" class="labelB">Level</label>
+        <input type="text" class="inputB" id="level" value=""><br>
+    </div>
+
+    <!--<div>-->
+    <!--<button class="reset-btn">Reset</button>-->
+    <!--</div>-->
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+
+    "use strict";
+
+    $(document).ready(function () {
+
+var sysRanNumA = [];
+var i = 0;
+
+
+//if GO button is pressed
+        $("#small-circle").click(function () {
+            $("#blue")
+                .animate({opacity: .5}, 300)
+                .animate({opacity: 1}, 300);
+            setTimeout(function () {
+                $("#red")
+                    .animate({opacity: .5}, 300)
+                    .animate({opacity: 1}, 300);
+            }, 250)
+            setTimeout(function () {
+                $("#green")
+                    .animate({opacity: .5}, 300)
+                    .animate({opacity: 1}, 300);
+            }, 500)
+            setTimeout(function () {
+                $("#yellow")
+                    .animate({opacity: .5}, 300)
+                    .animate({opacity: 1}, 300);
+            }, 750);
+            setTimeout(function () {
+// call to get random number
+                getSystemRanNum();
+            }, 2000);
+
+        });
+
+// function to get random number
+        function getSystemRanNum() {
+            var sysRanNum = Math.floor((Math.random() * 4) + 1);
+            sysRanNumA.push(sysRanNum);  // random number being pushed to array
+            console.log(sysRanNum);
+            console.log(sysRanNumA);
+            firstSysClick();
+        }
+
+        function flash(btn) {
+            $(btn)
+                .animate({opacity: .5}, 300)
+                .animate({opacity: 1}, 300);
+        }
+
+// get first system click
+        function firstSysClick() {
+
+            switch (sysRanNumA[0]) {
+                case 1 :
+                    flash('#blue');
+                    break;
+                case 2 :
+                    flash('#red');
+                    break;
+                case 3 :
+                    flash('#green');
+                    break;
+                case 4 :
+                    flash('#yellow');
+                    break;
+
+            } // end switch
+
+            //user will now press button tyo mimic the random click
+            userPressedButton();
+
+    };
+
+function userPressedButton() {
+
+    $(".box").click( function() {
+    var dType = $(this).attr("data-box1");
+    console.log(dType);
+
+            switch (dType) {
+                case '1' :
+                    flash('#blue');
+                    break;
+                case '2' :
+                    flash('#red');
+                    break;
+                case '3' :
+                    flash('#green');
+                    break;
+                case '4' :
+                    flash('#yellow');
+                    break;
+        } // end switch
+
+    });
+
+    compareF();
+};
+
+
+function compareF() {
+    if (sysRanNumA[i] == dType) {
+
+        if (sysRanNumA.length - 1) {
+
+            getSystemRanNum();
+
+        }  else {
+            i++;
+        }
+
+    } else {
+        alert("You are done!");
+    }
+
+}
+
+
+
+//        var dType = $(this).attr("data-box1");
+//        var userArray.push(dtype);
+//        console.log(userArray);
+
+// end main iffe
+    });
+
+
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--if error, blink all squares three times-->
+<!--make big buttons 2d-->
 </body>
 </html>
+
