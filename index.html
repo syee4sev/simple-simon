@@ -16,89 +16,105 @@
     <style>
 
 
-        /*#outside-div {*/
-        /*margin-top: 150px;*/
-        /*margin-left: 400px;*/
-        /*}*/
-
-        .reset-btn {
-            width: 80px;
-            heigth: 40px;
-            margin-left: 240px;
-            border-radius: 7px;
-            background-color: gray;
-            opacity: .5;
-            color: white;
-            font-weight: bold;
+        #outside-div {
+        margin-top: 10px;
+        margin-left: 100px;
         }
+
+        /*.reset-btn {*/
+        /*width: 80px;*/
+        /*heigth: 40px;*/
+        /*margin-left: 240px;*/
+        /*border-radius: 7px;*/
+        /*background-color: gray;*/
+        /*opacity: .5;*/
+        /*color: white;*/
+        /*font-weight: bold;*/
+        /*}*/
         .box {
-            width: 220px;
+            /*width: 100%;*/
             height: 220px;
-            margin-left: 23px;
-            margin-bottom: 15px;
-            margin-top: 15px;
+            margin: 21px 15px 0px 25px;
             border-radius: 30px;
             float: left;
         }
+
         #blue {
             background-color: blue;
+            border: solid 2px dodgerblue;
         }
+
         #red {
             background-color: red;
+            border: solid 2px indianred;
         }
+
         #green {
             background-color: green;
+            border: solid 2px lawngreen;
         }
+
         #yellow {
             background-color: yellow;
+            border: solid 2px #fbed9d;
         }
-        #container {
+
+        #wrapper {
             background-color: black;
-            width: 510px;
+            /*width: 100%;*/
             height: 580px;
-            margin-left: 350px;
+            /*margin-left: 350px;*/
             border-radius: 25px;
         }
+
         .circle {
             border-radius: 50%;
             position: relative;
-            width: 200px;
+            /*width: 200px;*/
             height: 200px;
             background: black;
-            margin-left: 500px;
+            /*margin-left: 467px;*/
             margin-top: -425px;
         }
+
         .goCircle {
             border-radius: 50%;
-            width: 125px;
+            /*width: 125px;*/
             height: 125px;
             border: 1px solid orange;
             background: white;
             color: Orange;
             font-size: xx-large;
-            position: absolute;
-            margin-top: 37px;
-            margin-left: 39px;
+            /*position: absolute;*/
+            margin: 21px 36px 0px 36px;
+
+            /*margin-left: 39px;*/
         }
+
         span {
             margin-left: 35px;
             margin-top: 35px;
             position: absolute;
         }
+
         .labelB {
             text-decoration: solid;
             font-family: 'Righteous', cursive;
-            color: white;
+            color: white !important;
+            display: inline !important;
+            position: relative;
             margin-left: -410px;
-            margin-top: 125px;
+            top: 115px;
             font-size: 70px;
+            /*z-index: 20;*/
         }
+
         #levelNum {
             text-decoration: solid;
             font-family: 'Righteous', cursive;
             color: white;
-            margin-left: 70px;
-            margin-top: 125px;
+            /*margin-left: 117px;*/
+            margin-top: 117px;
             font-size: 70px;
         }
 
@@ -112,46 +128,53 @@
 
 <br>
 
-<div id="container">
+<div class="container">
 
-    <div class="box shk" id="blue" data-box1="1"></div>
-    <div class="box shk" id="red" data-box1="2"></div>
-    <div class="box shk" id="green" data-box1="3"></div>
-    <div class="box shk" id="yellow" data-box1="4"></div>
-</div>
+    <div class="row">
+        <div id="wrapper" class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 
-<div class="circle">
-    <div id="small-circle" class="goCircle">
-        <span>Go!</span>
-    </div>
-</div>
-
-
-<div id="outside-div">
-    <div>
-        <label id="#level" class="labelB">Level</label>
-        <span id="levelNum"></span>
-        <!--<input type="text" class="inputB" id="level" value=""><br>-->
+            <div class="box col-xs-4 col-sm-5" id="blue" data-box1="1"></div>
+            <div class="box col-xs-4 col-sm-5" id="red" data-box1="2"></div>
+            <div class="box col-xs-4 col-sm-5" id="green" data-box1="3"></div>
+            <div class="box col-xs-4 col-sm-5" id="yellow" data-box1="4"></div>
+        </div>
     </div>
 
-    <!--<div>-->
-    <!--<button class="reset-btn">Reset</button>-->
-    <!--</div>-->
+    <div class="circle">
+        <div id="small-circle" class="goCircle">
+            <span>Go!</span>
+        </div>
+    </div>
+
+
+    <div id="outside-div">
+        <div>
+            <label id="level" class="labelB">Level</label>
+            <span id="levelNum"></span>
+            <!--<input type="text" class="inputB" id="level" value=""><br>-->
+        </div>
+
+        <!--<div>-->
+        <!--<button class="reset-btn">Reset</button>-->
+        <!--</div>-->
+
+    </div>
 
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 
     "use strict";
 
     $(document).ready(function () {
-    level = 0;
-    $("#levelNum").html(level);
-var sysRanNumA = [];
-var level = 0;
-var music = new Audio("audio/Dont-fail-me-again.mp3");
+        level = 0;
+        $("#levelNum").html(level);
+        var sysRanNumA = [];
+        var level = 0;
+        var music = new Audio("audio/Dont-fail-me-again.mp3");
 
 //if GO button is pressed
         $("#small-circle").click(function () {
@@ -197,94 +220,93 @@ var music = new Audio("audio/Dont-fail-me-again.mp3");
 
 // get first system click
         function firstSysClick() {
-        level++;
-        var i = 0;
-        var intervalId = setInterval(function(){
-            $("#levelNum").html(level);
-            switch (sysRanNumA[i]) {
-                case 1 :
-                    flash('#blue');
-                    break;
-                case 2 :
-                    flash('#red');
-                    break;
-                case 3 :
-                    flash('#green');
-                    break;
-                case 4 :
-                    flash('#yellow');
-                    break;
+            level++;
+            var i = 0;
+            var intervalId = setInterval(function () {
+                $("#levelNum").html(level);
+                switch (sysRanNumA[i]) {
+                    case 1 :
+                        flash('#blue');
+                        break;
+                    case 2 :
+                        flash('#red');
+                        break;
+                    case 3 :
+                        flash('#green');
+                        break;
+                    case 4 :
+                        flash('#yellow');
+                        break;
 
-            } // end switch
+                } // end switch
 
-            if(i >= sysRanNumA.length -1){
-                userPressedButton();
-                clearInterval(intervalId);
-            }else{
-                i++;
-            }
-        }, 800);
+                if (i >= sysRanNumA.length - 1) {
+                    userPressedButton();
+                    clearInterval(intervalId);
+                } else {
+                    i++;
+                }
+            }, 800);
 
             //user will now press button tyo mimic the random click
 
-    };
+        };
 
-function userPressedButton() {
-    var i = 0;
+        function userPressedButton() {
+            var i = 0;
 
-    $(".box").on('click', function() {
+            $(".box").on('click', function () {
 
-    var dType = $(this).attr("data-box1");
-    console.log(dType);
+                var dType = $(this).attr("data-box1");
+                console.log(dType);
 
-            switch (dType) {
-                case '1' :
-                    flash('#blue');
-                    break;
-                case '2' :
-                    flash('#red');
-                    break;
-                case '3' :
-                    flash('#green');
-                    break;
-                case '4' :
-                    flash('#yellow');
-                    break;
-        } // end switch
+                switch (dType) {
+                    case '1' :
+                        flash('#blue');
+                        break;
+                    case '2' :
+                        flash('#red');
+                        break;
+                    case '3' :
+                        flash('#green');
+                        break;
+                    case '4' :
+                        flash('#yellow');
+                        break;
+                } // end switch
 
-        if (sysRanNumA[i] == dType) {
+                if (sysRanNumA[i] == dType) {
 
-            if (i == sysRanNumA.length - 1) {
+                    if (i == sysRanNumA.length - 1) {
 
-                getSystemRanNum();
-                $(".box").off('click');
+                        getSystemRanNum();
+                        $(".box").off('click');
 
-            }  else {
+                    } else {
 
-                i++;
+                        i++;
 
-            }
+                    }
 
-        } else {
-            sysRanNumA = [];
-            level = 0;
-            $("#levelNum").html(level);
+                } else {
+                    sysRanNumA = [];
+                    level = 0;
+                    $("#levelNum").html(level);
 //            $(".box").off('click');
-            shake();
-            music.play();
+                    shake();
+                    music.play();
+                }
+            });
         }
-    });
-    }
 
 
-    function shake() {
-        $( "body" ).effect( 'shake' );
-    }
-
+        function shake() {
+            $("body").effect('shake');
+        }
 
 
 // end main iffe
-});
+    });
 
 
 </script>
