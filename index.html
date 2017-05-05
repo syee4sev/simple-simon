@@ -70,11 +70,13 @@
         .circle {
             border-radius: 50%;
             position: relative;
-            /*width: 200px;*/
+            width: 200px;
             height: 200px;
-            background: black;
-            /*margin-left: 467px;*/
+            background: white;
+            margin-left: 41%;
             margin-top: -425px;
+            padding: 15px;
+            border: 35px solid black;
         }
 
         .goCircle {
@@ -91,10 +93,11 @@
             /*margin-left: 39px;*/
         }
 
-        span {
-            margin-left: 35px;
-            margin-top: 35px;
-            position: absolute;
+        span#go {
+            position: relative;
+            bottom: 350px;
+            font-size:2.5em;
+            color: orange;
         }
 
         .labelB {
@@ -118,7 +121,52 @@
             font-size: 70px;
         }
 
+        @media (max-width: 1200px) and (min-width:992px){
+            .circle{
+                margin-left:39%;
+            }
+        }
+        @media (max-width: 991px) and (min-width:768px){
+            .circle{
+                margin-left: 35%;
+            }
+        }
+        @media (max-width:767px){
+            .circle{
+                margin-left: 26%;
+            }
 
+            @media (max-width:765px) {
+                .circle {
+                    margin-left: 25%;
+                }
+            }
+
+            @media (max-width:670px) {
+                .circle {
+                    margin-left: 24%;
+                }
+            }
+
+            @media (max-width:620px) {
+                .circle {
+                    margin-left: 23%;
+                }
+            }
+
+            @media (max-width:525px) {
+                .circle {
+                    margin-left: 22%;
+                }
+            }
+
+            @media (max-width:400px) {
+                .circle {
+                    margin-left: 19%;
+                }
+            }
+
+        }
     </style>
 
 </head>
@@ -140,10 +188,10 @@
         </div>
     </div>
 
-    <div class="circle">
-        <div id="small-circle" class="goCircle">
-            <span>Go!</span>
-        </div>
+    <div class="circle text-center">
+        <!--<div id="small-circle" class="goCircle">-->
+            <span id="go">Go!</span>
+        <!--</div>-->
     </div>
 
 
